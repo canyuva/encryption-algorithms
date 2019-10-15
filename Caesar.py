@@ -18,7 +18,7 @@ def existsDigit(msg):
 def getMessage():
     msg = input('Enter the message :')
     if existsDigit(msg):
-        return 'err'
+        return 'Please do not type digits'
     else:
         return msg
 
