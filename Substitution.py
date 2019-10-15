@@ -1,13 +1,5 @@
-MAX_KEY = 29
 alphabet = "abcçdefgğhıijklmnoöprsştuüvyz"
-
-def getKey():
-    key = 0
-    while True:
-        print('Enter the key number (1-%s)' % (MAX_KEY))
-        key = int(input())
-        if (key >= 1 and key <= MAX_KEY):
-            return key
+my_alphabet = "/*-+?*$#%&/()[]'!.,@;~<>|´`^éX"
 
 def existsDigit(msg):
     for i in msg:
@@ -22,35 +14,34 @@ def getMessage():
     else:
         return msg
 
-def encrypt(msg,key):
+def encrypt(msg):
     msg = str.lower(msg)
     encrypted = ''
     for letter in msg:
-        index = msg.index(letter)
-        encrypted+=alphabet[(index+int(key))%len(alphabet)]
+        index = alphabet.index(letter)
+        encrypted+=my_alphabet[index]
     return encrypted
 
-def decrypt(encrypted,key):
+def decrypt(encrypted):
     decrypted = ''
     for letter in encrypted:
-        index = encrypted.index(letter)
-        decrypted+=alphabet[(index-key)%len(alphabet)]
+        index = my_alphabet.index(letter)
+        decrypted+=alphabet[index]
     return decrypted
-        
+
 def main():
-    print('163301015 - Bekir Can YUVA\nCaesar\n\nEncryption or Decryption ?\n1- Encryption\n2- Decryption')
+    print('163301015 - Bekir Can YUVA\nSubstitution\n\nEncryption or Decryption ?\n1- Encryption\n2- Decryption')
     selection = input('Selection : ')
     if selection == '1':
         msg = getMessage()
-        key = getKey()
-        encrypted = encrypt(msg,key)
+        encrypted = encrypt(msg)
         print(encrypted)
     elif selection == '2':
         msg = getMessage()
-        key = getKey()
-        decrypted = decrypt(msg,key)
+        decrypted = decrypt(msg)
         print(decrypted)
     else:
         print('Please enter a valid value')
 
 main()
+
